@@ -1,0 +1,5 @@
+main: xyz.nagiasu.discordclient.DiscordSp
+name: DiscordClient
+version: ${project.version}
+author: MiunaPA
+api-version: 1.16

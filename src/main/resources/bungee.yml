@@ -1,0 +1,4 @@
+main: xyz.nagiasu.discordclient.DiscordBC
+name: DiscordClient
+version: ${project.version}
+author: MiunaPA
