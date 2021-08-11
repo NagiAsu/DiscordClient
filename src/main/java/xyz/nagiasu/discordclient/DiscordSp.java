@@ -9,7 +9,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class DiscordSp extends JavaPlugin {
     FileConfiguration config;
-    static JDA jdaApi;
+    static JDA jdaApi = null;
 
     @Override
     public void onEnable() {
