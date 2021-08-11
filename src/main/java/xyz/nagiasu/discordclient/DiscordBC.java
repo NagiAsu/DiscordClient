@@ -17,7 +17,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 
 public class DiscordBC extends Plugin {
     Configuration config;
-    static JDA jdaApi;
+    static JDA jdaApi = null;
 
     @Override
     public void onEnable() {
