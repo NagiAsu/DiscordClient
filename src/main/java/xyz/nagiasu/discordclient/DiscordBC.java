@@ -80,4 +80,8 @@ public class DiscordBC extends Plugin {
             e.printStackTrace();
         }
     }
+
+    public static JDA getJDA() {
+        return jdaApi;
+    }
 }
