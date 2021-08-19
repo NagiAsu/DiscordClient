@@ -9,6 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+        <github.global.server>github</github.global.server>
     </properties>
     <repositories>
         <repository>
@@ -108,4 +109,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>DiscordClient</name>
+            <url>https://maven.pkg.github.com/Nagiasu/DiscordClient</url>
+        </repository>
+    </distributionManagement>
 </project>
