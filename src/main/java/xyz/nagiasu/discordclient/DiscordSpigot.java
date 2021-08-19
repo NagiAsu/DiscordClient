@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.md_5.bungee.api.ChatColor;
 
-public class DiscordSp extends JavaPlugin {
+public class DiscordSpigot extends JavaPlugin {
     FileConfiguration config;
     static JDA jdaApi = null;
 
@@ -27,7 +27,6 @@ public class DiscordSp extends JavaPlugin {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken")).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
-
         } catch (LoginException e) {
             e.printStackTrace();
             jdaApi = null;

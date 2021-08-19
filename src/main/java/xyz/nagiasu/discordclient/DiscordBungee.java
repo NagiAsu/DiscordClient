@@ -15,7 +15,7 @@ import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
-public class DiscordBC extends Plugin {
+public class DiscordBungee extends Plugin {
     Configuration config;
     static JDA jdaApi = null;
 
