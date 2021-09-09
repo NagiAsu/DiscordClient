@@ -45,6 +45,11 @@ public class DiscordBungee extends Plugin {
         }
     }
 
+    @Override
+    public void onDisable() {
+        jdaApi.shutdownNow();
+    }
+
     boolean createConfig() {
         try {
             if (!getDataFolder().exists()) {

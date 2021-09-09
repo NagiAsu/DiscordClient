@@ -41,4 +41,9 @@ public class DiscordSpigot extends JavaPlugin {
     public static JDA getJDA() {
         return jdaApi;
     }
+
+    @Override
+    public void onDisable() {
+        jdaApi.shutdownNow();
+    }
 }
