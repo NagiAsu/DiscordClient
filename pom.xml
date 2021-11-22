@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>1.5.310</version>
+    <version>1.6.346</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,9 +42,15 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.3.0_310</version>
+            <version>4.3.0_346</version>
             <type>jar</type>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>4.3.0_346</version>
+            <classifier>sources</classifier>
         </dependency>
         <dependency>
             <groupId>club.minnced</groupId>
@@ -66,27 +72,6 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>testCompile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -111,9 +96,9 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>github</id>
+            <id>repsy</id>
             <name>DiscordClient</name>
-            <url>https://maven.pkg.github.com/Nagiasu/DiscordClient</url>
+            <url>https://repo.repsy.io/mvn/miunapa/pa</url>
         </repository>
     </distributionManagement>
 </project>
