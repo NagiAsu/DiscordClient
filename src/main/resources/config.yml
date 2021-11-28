@@ -1,1 +1,4 @@
 DiscordBotToken: ""
+GlobalMessageChannel: ""
+StartMessage: ""
+StopMessage: ""

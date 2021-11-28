@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>1.6.346</version>
+    <version>1.7.346</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

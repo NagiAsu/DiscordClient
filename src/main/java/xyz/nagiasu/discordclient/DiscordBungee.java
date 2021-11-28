@@ -9,6 +9,7 @@ import javax.security.auth.login.LoginException;
 import com.google.common.io.ByteStreams;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -18,6 +19,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 public class DiscordBungee extends Plugin {
     Configuration config;
     static JDA jdaApi = null;
+    TextChannel tc;
 
     @Override
     public void onEnable() {
@@ -30,6 +32,7 @@ public class DiscordBungee extends Plugin {
             this.getLogger().info(ChatColor.RED + "尚未設定Discord Token");
             return;
         }
+        // Discord JDA Connect
         try {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken")).build();
             jdaApi.awaitReady();
@@ -43,10 +46,18 @@ public class DiscordBungee extends Plugin {
             jdaApi = null;
             return;
         }
+        // Startup Message
+        tc = jdaApi.getTextChannelById(config.getString("GlobalMessageChannel"));
+        if (tc != null && !config.getString("StartMessage").equals("")) {
+            tc.sendMessage(config.getString("StartMessage")).complete();
+        }
     }
 
     @Override
     public void onDisable() {
+        if (tc != null && !config.getString("StopMessage").equals("")) {
+            tc.sendMessage(config.getString("StopMessage")).complete();
+        }
         jdaApi.shutdownNow();
     }
 
