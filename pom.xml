@@ -94,11 +94,4 @@
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>repsy</id>
-            <name>DiscordClient</name>
-            <url>https://repo.repsy.io/mvn/miunapa/pa</url>
-        </repository>
-    </distributionManagement>
 </project>
