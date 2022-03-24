@@ -13,6 +13,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
@@ -39,7 +40,7 @@ public class DiscordBungee extends Plugin {
         try {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken"))
                     .setChunkingFilter(ChunkingFilter.ALL)
-                    .setMemberCachePolicy(MemberCachePolicy.ALL)
+                    .setMemberCachePolicy(MemberCachePolicy.ALL).enableCache(CacheFlag.EMOTE)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
