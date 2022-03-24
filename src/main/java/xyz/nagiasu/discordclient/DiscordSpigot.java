@@ -6,6 +6,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.ChunkingFilter;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.md_5.bungee.api.ChatColor;
 
 public class DiscordSpigot extends JavaPlugin {
@@ -30,7 +33,10 @@ public class DiscordSpigot extends JavaPlugin {
         }
         // Discord JDA Connect
         try {
-            jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken")).build();
+            jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken"))
+                    .setChunkingFilter(ChunkingFilter.ALL)
+                    .setMemberCachePolicy(MemberCachePolicy.ALL)
+                    .enableIntents(GatewayIntent.GUILD_MEMBERS).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
         } catch (LoginException e) {
