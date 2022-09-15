@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>1.10.346</version>
+    <version>5.0.0-alpha.19-v0</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,15 +42,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.3.0_346</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>4.3.0_346</version>
-            <classifier>sources</classifier>
+            <version>5.0.0-alpha.19</version>
         </dependency>
         <dependency>
             <groupId>club.minnced</groupId>

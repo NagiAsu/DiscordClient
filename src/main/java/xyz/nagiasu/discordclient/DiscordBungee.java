@@ -5,11 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import javax.security.auth.login.LoginException;
 import com.google.common.io.ByteStreams;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
@@ -40,11 +39,11 @@ public class DiscordBungee extends Plugin {
         try {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken"))
                     .setChunkingFilter(ChunkingFilter.ALL)
-                    .setMemberCachePolicy(MemberCachePolicy.ALL).enableCache(CacheFlag.EMOTE)
+                    .setMemberCachePolicy(MemberCachePolicy.ALL).enableCache(CacheFlag.EMOJI)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
-        } catch (LoginException e) {
+        } catch (IllegalStateException e) {
             e.printStackTrace();
             jdaApi = null;
             return;
