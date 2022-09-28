@@ -86,4 +86,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>DiscordClient</name>
+            <url>https://maven.pkg.github.com/NagiAsu/DiscordClient</url>
+        </repository>
+    </distributionManagement>
 </project>
