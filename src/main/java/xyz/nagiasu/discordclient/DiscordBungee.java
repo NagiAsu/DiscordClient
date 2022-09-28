@@ -40,7 +40,8 @@ public class DiscordBungee extends Plugin {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken"))
                     .setChunkingFilter(ChunkingFilter.ALL)
                     .setMemberCachePolicy(MemberCachePolicy.ALL).enableCache(CacheFlag.EMOJI)
-                    .enableIntents(GatewayIntent.GUILD_MEMBERS).build();
+                    .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                    .enableIntents(GatewayIntent.MESSAGE_CONTENT).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
         } catch (IllegalStateException e) {
