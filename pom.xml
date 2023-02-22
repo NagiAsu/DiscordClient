@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>5.0.0-alpha.22</version>
+    <version>5.0.0-beta.4</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,7 +44,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>5.0.0-alpha.22</version>
+            <version>5.0.0-beta.4</version>
         </dependency>
         <dependency>
             <groupId>club.minnced</groupId>
@@ -88,8 +90,9 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo
-                </altDeploymentRepository>
+                    <altDeploymentRepository>
+                        internal.repo::default::file://${project.build.directory}/mvn-repo
+                    </altDeploymentRepository>
                 </configuration>
             </plugin>
             <plugin>
@@ -99,7 +102,8 @@
                 <configuration>
                     <message>Creating site for ${project.artifactId} ${project.version}</message>
                     <noJekyll>true</noJekyll>
-                    <!--本地jar地址, 對應上面的altDeploymentRepository-->
+                    <!--本地jar地址,
+                    對應上面的altDeploymentRepository-->
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <!--分支-->
                     <branch>refs/heads/master</branch>
@@ -108,9 +112,11 @@
                     <includes>
                         <include>**/*</include>
                     </includes>
-                    <!--對應github上建立的倉庫名稱 name-->
+                    <!--對應github上建立的倉庫名稱
+                    name-->
                     <repositoryName>DiscordClient</repositoryName>
-                    <!--github登入賬號 對應的密碼存在maven的setting.xml檔案中-->
+                    <!--github登入賬號
+                    對應的密碼存在maven的setting.xml檔案中-->
                     <!--由github組織擁有，則該值將是組織名稱，如果由使用者擁有，則該值將是使用者名稱-->
                     <repositoryOwner>NagiAsu</repositoryOwner>
                 </configuration>
