@@ -36,6 +36,7 @@ public class DiscordSpigot extends JavaPlugin {
             jdaApi = JDABuilder.createDefault(config.getString("DiscordBotToken"))
                     .setChunkingFilter(ChunkingFilter.ALL)
                     .setMemberCachePolicy(MemberCachePolicy.ALL).enableCache(CacheFlag.EMOJI)
+                    .enableIntents(GatewayIntent.GUILD_PRESENCES)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS)
                     .enableIntents(GatewayIntent.MESSAGE_CONTENT).build();
             jdaApi.awaitReady();
