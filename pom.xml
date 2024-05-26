@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>5.0.0-beta.13</version>
+    <version>240526.1</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,6 +56,11 @@
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.nanohttpd</groupId>
+            <artifactId>nanohttpd</artifactId>
+            <version>2.3.1</version>
         </dependency>
     </dependencies>
     <build>
