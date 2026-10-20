@@ -1,0 +1,11 @@
+# 編譯檢查：呼叫 NagiAsu/.github 的共用流程（要改檢查內容請改那邊）
+name: 編譯檢查
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  compile:
+    uses: NagiAsu/.github/.github/workflows/maven-compile.yml@main
