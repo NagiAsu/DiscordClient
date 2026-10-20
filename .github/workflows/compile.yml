@@ -1,4 +1,6 @@
-# 編譯檢查：呼叫 NagiAsu/.github 的共用流程（要改檢查內容請改那邊）
+# 編譯檢查（與 NagiAsu/.github 的共用流程相同步驟）
+# 這個 repo 是 public，GitHub 不允許 public repo 呼叫 private repo 的流程，所以步驟直接寫在這裡；
+# 改檢查內容時，記得與 NagiAsu/.github/.github/workflows/maven-compile.yml 同步。
 name: 編譯檢查
 
 on:
@@ -6,6 +8,19 @@ on:
     branches: [master]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   compile:
-    uses: NagiAsu/.github/.github/workflows/maven-compile.yml@main
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: mvn compile
+        run: mvn -B -ntp -DskipTests compile
