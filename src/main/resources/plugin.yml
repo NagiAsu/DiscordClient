@@ -3,3 +3,6 @@ name: DiscordClient
 version: ${project.version}
 author: MiunaPA
 api-version: 1.16
+# Nagi_TagSystem 的稱號模組 DiscordNitro 啟用時就要拿 JDA，但它的 plugin.yml 沒有宣告依賴本插件；
+# 沒有依賴關係的插件 Paper 不保證啟用順序（10-25 測試服換了檔名順序就反了），所以由本插件宣告要先載入
+loadbefore: [Nagi_TagSystem]
