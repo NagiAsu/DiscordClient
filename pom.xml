@@ -50,6 +50,12 @@
                     <groupId>com.google.crypto.tink</groupId>
                     <artifactId>tink</artifactId>
                 </exclusion>
+                <!-- 用伺服器自帶的 SLF4J（Paper 2.x、Waterfall 1.7.36＋jdk14）：打包 2.x 進來的話，
+                     Waterfall 上 JDA 找不到 2.x 的輸出實作，會改用備用輸出寫到 stderr，每行都被記成 ERROR -->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
