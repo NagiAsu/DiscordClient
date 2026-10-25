@@ -42,6 +42,7 @@ public class DiscordSpigot extends JavaPlugin {
                     .enableIntents(GatewayIntent.MESSAGE_CONTENT).build();
             jdaApi.awaitReady();
             this.getLogger().info(ChatColor.GREEN + "Discord連接成功!");
+            DiscordClientApi.setJDA(jdaApi);
         } catch (IllegalStateException e) {
             e.printStackTrace();
             jdaApi = null;
