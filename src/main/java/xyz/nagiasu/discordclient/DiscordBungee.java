@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 import com.google.common.io.ByteStreams;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -67,6 +68,13 @@ public class DiscordBungee extends Plugin {
             tc.sendMessage(config.getString("StopMessage")).complete();
         }
         jdaApi.shutdownNow();
+        // 等 JDA 的執行緒真的結束再讓伺服器關掉插件的 jar；不等的話 JDA 6 的 WebSocket 執行緒收尾時
+        // 才去載入類別，會印「zip file closed」錯誤（10-25 測試服實測）
+        try {
+            jdaApi.awaitShutdown(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     boolean createConfig() {

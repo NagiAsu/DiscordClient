@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>xyz.nagiasu.discordclient</groupId>
     <artifactId>discordclient</artifactId>
-    <version>261022.1</version>
+    <version>261025.1</version>
     <name>DiscordClient</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,11 +21,6 @@
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>dv8tion</id>
-            <name>m2-dv8tion</name>
-            <url>https://m2.dv8tion.net/releases</url>
         </repository>
     </repositories>
     <dependencies>
@@ -44,12 +39,24 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>5.0.0-beta.13</version>
-        </dependency>
-        <dependency>
-            <groupId>club.minnced</groupId>
-            <artifactId>discord-webhooks</artifactId>
-            <version>0.8.2</version>
+            <version>6.7.0</version>
+            <!-- 語音用的套件，MC 插件都沒有用到語音（JDA README 說可以排除） -->
+            <exclusions>
+                <exclusion>
+                    <groupId>club.minnced</groupId>
+                    <artifactId>opus-java</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.crypto.tink</groupId>
+                    <artifactId>tink</artifactId>
+                </exclusion>
+                <!-- 用伺服器自帶的 SLF4J（Paper 2.x、Waterfall 1.7.36＋jdk14）：打包 2.x 進來的話，
+                     Waterfall 上 JDA 找不到 2.x 的輸出實作，會改用備用輸出寫到 stderr，每行都被記成 ERROR -->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
