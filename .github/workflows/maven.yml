@@ -1,3 +1,4 @@
+# 推 tag 時建置並發佈 GitHub Release（jar 附在 Release 上）
 name: Java CI with Maven
 
 on:
@@ -5,27 +6,29 @@ on:
     tags:
       - "*"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up JDK 21
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
-          java-version: "17"
-          distribution: "adopt"
+          java-version: "21"
+          distribution: temurin
+          cache: maven
       - name: Build with Maven
-        run: mvn package -f pom.xml
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            target/*.jar
+        run: mvn -B -ntp package -f pom.xml
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" target/*.jar --title "$GITHUB_REF_NAME" --generate-notes
       - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: Package
           path: staging
