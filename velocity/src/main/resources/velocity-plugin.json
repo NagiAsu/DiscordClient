@@ -1,0 +1,7 @@
+{
+  "id": "discordclient",
+  "name": "DiscordClient",
+  "version": "${project.version}",
+  "authors": ["MiunaPA"],
+  "main": "xyz.nagiasu.discordclient.DiscordVelocity"
+}

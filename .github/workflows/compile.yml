@@ -24,3 +24,18 @@ jobs:
           cache: maven
       - name: mvn compile
         run: mvn -B -ntp -DskipTests compile
+
+  # Velocity 版（proxy 用，velocity/ 子專案）：Velocity 4 的 API 要 JDK 25
+  compile-velocity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+      - name: mvn compile
+        working-directory: velocity
+        run: mvn -B -ntp -DskipTests compile

@@ -1,4 +1,0 @@
-main: xyz.nagiasu.discordclient.DiscordBungee
-name: DiscordClient
-version: ${project.version}
-author: MiunaPA
